@@ -10,7 +10,8 @@
 
 - **後端框架**：Django 5.2+
 - **資料庫**：PostgreSQL（Render 雲端服務）
-- **前端樣式**：Bootstrap 5、Jinja2、Grappelli
+- **前端樣式**：Bootstrap 5、Jinja2
+- **後端樣式**：Grappelli
 - **系統管理**：Django Admin 自訂頁面
 - **其他工具**：Python 3.12、Git、PyCharm
 
@@ -69,37 +70,30 @@ python manage.py runserver
 
 🔐 資料庫設定（Render 免費 PostgreSQL）
 
-請將連線設定寫入 .env 檔案並確保不被推送至 GitHub（已在 .gitignore 處理）。
-
-DB_NAME=django_pg_demo
-DB_USER=django_pg_demo_user
-DB_PASSWORD=xxxxx
-DB_HOST=dpg-xxxxx.render.com
-DB_PORT=5432
-
 📸 頁面展示 Screenshots
-🛍️ 1. 前台商品列表與搜尋畫面
-![前台商品列表與搜尋畫面] (assets/screenshots/product_list.png)
+
+🛍️ 1. 前台商品列表與搜尋畫面  
+![前台商品列表與搜尋畫面](assets/screenshots/product_list.png)  
 支援商品分類、名稱關鍵字查詢與價格區間過濾：
 
-📄 2. 商品詳情頁（含輪播與推薦）
-![商品詳情頁](assets/screenshots/product_detail.png)
+📄 2. 商品詳情頁（含輪播與推薦）  
+![商品詳情頁](assets/screenshots/product_detail.png)  
 展示商品圖片輪播與相似商品推薦區塊：
 
-🚚 3. 訂單追蹤畫面
-![訂單追蹤畫面](assets/screenshots/order_list.png)
+🚚 3. 訂單追蹤畫面  
+![訂單追蹤畫面](assets/screenshots/order_list.png)  
 顯示用戶的訂單狀態與歷史訂單明細：
 
-🛒 4. 購物車畫面
-![購物車畫面](assets/screenshots/cart_view.png)
+🛒 4. 購物車畫面  
+![購物車畫面](assets/screenshots/cart_view.png)  
 可查看商品、修改數量、刪除與前往結帳：
 
-💬 5. 後台留言介面（左右氣泡對話）
-![後台留言介面](assets/screenshots/admin_chat.png)
+💬 5. 後台留言介面（左右氣泡對話）  
+![後台留言介面](assets/screenshots/admin_chat.png)  
 模擬蝦皮樣式的客服系統，區分客戶與管理員訊息：
 
-🧩 6. Grappelli 美化後台首頁
-![美化後台首頁](assets/screenshots/admin_home.png)
+🧩 6. Grappelli 美化後台首頁  
+![美化後台首頁](assets/screenshots/admin_home.png)  
 使用 Django Grappelli 強化後台整體視覺與功能體驗：
 
 🔜 下一步規劃（延伸開發）
