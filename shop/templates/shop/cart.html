@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% if error %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    showErrorToast("{{ error }}");
+  });
+</script>
+{% endif %}
+{% block content %}
+<style>
+  .step {
+    text-align: center;
+    flex: 1;
+  }
+  .circle {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  .active .circle {
+    background: #0d6efd;
+    color: white;
+  }
+  .label {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+</style>
+<div class="container mt-5">
+    <h2 class="mb-4">🛒 購物車</h2>
+
+    {% if cart_items %}
+        <ul class="list-group mb-4">
+            {% for item in cart_items %}
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-1">{{ item.product.name }}</h5>
+                            <p class="mb-1">單價：NT${{ item.product.price }}</p>
+                            <p class="mb-1">數量：{{ item.quantity }}</p>
+                            <p class="mb-1">小計：NT${{ item.subtotal }}</p>
+                        </div>
+                        <div class="text-end">
+                            <form method="post" action="{% url 'update_cart' item.product.id %}" class="d-inline">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1" class="form-control d-inline-block w-auto">
+                                <button type="submit" class="btn btn-sm btn-outline-primary">更新</button>
+                            </form>
+                            <form method="post" action="{% url 'remove_from_cart' item.product.id %}" class="d-inline ms-2">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-outline-danger">移除</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <h4 class="text-end">總金額：<span class="text-success">NT${{ total }}</span></h4>
+        <form action="{% url 'create_order' %}" method="post" class="text-end mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">✅ 前往結帳</button>
+        </form>
+    {% else %}
+        <div class="alert alert-info">購物車目前是空的。</div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'product_list' %}" class="btn btn-secondary">← 回到商品列表</a>
+    </div>
+    {% endblock %}
+</div>
+{% block stepbar %}
+<div class="container mb-4">
+  <div class="d-flex justify-content-between">
+    <div class="step {% if step == 1 %}active{% endif %}">
+      <div class="circle">1</div>
+      <div class="label">購物車</div>
+    </div>
+    <div class="step {% if step == 2 %}active{% endif %}">
+      <div class="circle">2</div>
+      <div class="label">結帳</div>
+    </div>
+    <div class="step {% if step == 3 %}active{% endif %}">
+      <div class="circle">3</div>
+      <div class="label">完成</div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

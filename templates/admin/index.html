@@ -1,0 +1,21 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+  <div style="max-width: 1200px; margin: 0 auto;">
+    {{ block.super }}
+
+    <div style="
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    ">
+      <h2 style="margin-bottom: 1.5rem;">📊 自訂報表工具</h2>
+      <a href="{% url 'sales_stats' %}" class="grp-button" style="margin-right: 1rem;">
+        銷售統計報表
+      </a>
+    </div>
+  </div>
+{% endblock %}

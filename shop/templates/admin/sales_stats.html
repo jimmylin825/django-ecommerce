@@ -1,0 +1,27 @@
+{% extends 'admin/base_site.html' %}
+{% block content %}
+  <h1>銷售統計報表</h1>
+
+  <form method="get" class="mb-4">
+    <label for="start_date">起始日期:</label>
+    <input type="date" name="start_date" value="{{ request.GET.start_date|default:'' }}">
+    <label for="end_date">結束日期:</label>
+    <input type="date" name="end_date" value="{{ request.GET.end_date|default:'' }}">
+    <button type="submit" class="default">查詢</button>
+    <a href="?start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&export=csv" class="button">匯出 CSV</a>
+    <a href="?start_date={{ request.GET.start_date }}&end_date={{ request.GET.end_date }}&export=excel" class="button">匯出 Excel</a>
+  </form>
+
+  {% if orders %}
+    <h2>統計結果：</h2>
+    <p><strong>訂單筆數：</strong>{{ orders|length }}</p>
+    <p><strong>總銷售金額：</strong>${{ total_sales|floatformat:2 }}</p>
+
+    <h3>熱銷商品 Top 5：</h3>
+    <ul>
+      {% for item in best_sellers %}
+        <li>{{ item.product__name }}：{{ item.total_sold }} 件</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block messages %}{% endblock %}
+{% block content %}
+<style>
+  .chat-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-header {
+    margin-bottom: 1rem;
+  }
+
+  .chat-messages {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .chat-message {
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+
+  .chat-left {
+    background-color: #f1f1f1;
+    align-self: flex-start;
+  }
+
+  .chat-right {
+    background-color: #cce5ff;
+    align-self: flex-end;
+  }
+
+  .message-meta {
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 3px;
+  }
+
+  .message-input {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .message-input textarea {
+    flex: 1;
+    resize: none;
+    height: 60px;
+  }
+
+  .message-input button {
+    padding: 10px 20px;
+    height: 60px;
+    font-size: 1rem;
+  }
+</style>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>訂單編號：{{ order.id }}</h2>
+    <hr>
+  </div>
+
+  <div class="chat-messages">
+    {% for msg in messages %}
+      <div class="chat-message {% if msg.sender == request.user %}chat-right{% else %}chat-left{% endif %}">
+        <div>{{ msg.content }}</div>
+        <div class="message-meta">{{ msg.sender.username }} ‧ {{ msg.created_at|date:"Y/m/d H:i" }}</div>
+      </div>
+    {% empty %}
+      <p>尚無留言。</p>
+    {% endfor %}
+  </div>
+
+  <form method="post" class="message-input">
+    {% csrf_token %}
+    <textarea name="content" rows="3" class="form-control" placeholder="請輸入您想回報的問題..."></textarea>
+    <button type="submit" class="btn btn-primary" style="background-color: #007bff; color: white; border: none;">
+  送出</button>
+  </form>
+</div>
+{% endblock %}

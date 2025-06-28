@@ -1,0 +1,38 @@
+# Python 環境
+__pycache__/
+*.py[cod]
+*.so
+
+# 環境管理
+.venv/
+env/
+*.env
+.env.*
+
+# SQLite (如果有測試過)
+db.sqlite3
+
+# VS Code 設定
+.vscode/
+
+# 作業系統暫存檔
+.DS_Store
+Thumbs.db
+
+# Log 檔
+*.log
+
+# Django 靜態與媒體
+staticfiles/
+media/
+
+# pycache 目錄深層排除
+**/__pycache__/
+
+# alembic 或 migration 過多時可視情況排除暫存資料
+*.egg-info/
+
+#筆記
+/Notes/
+# PyCharm
+.idea/

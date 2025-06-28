@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}訂單成功{% endblock %}
+{% if error %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    showErrorToast("{{ error }}");
+  });
+</script>
+{% endif %}
+{% block stepbar %}
+<style>
+  .step {
+    text-align: center;
+    flex: 1;
+  }
+  .step .circle {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  .step.active .circle {
+    background: #0d6efd;
+    color: white;
+  }
+  .step .label {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #333;
+  }
+</style>
+
+<div class="container mb-4">
+  <div class="d-flex justify-content-between">
+    <div class="step {% if step >= 1 %}active{% endif %}">
+      <div class="circle">1</div>
+      <div class="label">購物車</div>
+    </div>
+    <div class="step {% if step >= 2 %}active{% endif %}">
+      <div class="circle">2</div>
+      <div class="label">結帳</div>
+    </div>
+    <div class="step {% if step >= 3 %}active{% endif %}">
+      <div class="circle">3</div>
+      <div class="label">完成</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="alert alert-success">
+    ✅ 訂單已成功送出，感謝您的購買！
+  </div>
+  <a href="{% url 'product_list' %}" class="btn btn-primary">回首頁</a>
+</div>
+{% endblock %}
