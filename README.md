@@ -71,7 +71,7 @@ python manage.py runserver
 🔐 資料庫設定（Render 免費 PostgreSQL）
 
 📸 頁面展示 Screenshots
-
+```
 🛍️ 1. 前台商品列表與搜尋畫面  
 ![前台商品列表與搜尋畫面](assets/screenshots/product_list.png)  
 支援商品分類、名稱關鍵字查詢與價格區間過濾：
@@ -109,6 +109,22 @@ python manage.py runserver
     🖼️ 深入學習 HTML + Bootstrap 模板整合
 
     🧠 練習 JS / 前端互動功能（適度學習 Vue / React）
+
+## 🔌 API 功能 (Django REST Framework)
+
+本專案同時支援 API-only 模式，後端以 Django REST Framework 撰寫。
+
+- `/api/products/`：商品列表 (支援 GET)
+- `/api/products/{id}/`：商品詳情 (支援 GET)
+- `/api/cart/`：購物車操作 (支援 GET/POST/PATCH/DELETE)
+- `/api/orders/`：建立訂單與訂單列表
+- `/api/orders/{id}/`：訂單詳情
+- `/api/messages/`：訂單留言系統（支援 GET/POST）
+
+API 文件已整合 drf-spectacular 與 Swagger UI，開發者可直接透過瀏覽器檢視完整介面：
+
+🔗 Swagger 文件：`http://127.0.0.1:8000/api/docs/`  
+🔗 OpenAPI Schema：`http://127.0.0.1:8000/api/schema/`
 
 📮 開發者資訊
 
