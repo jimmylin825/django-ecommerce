@@ -3,7 +3,7 @@
 # 🛍️ Django 電商後台系統 (E-Commerce Backend with Admin Chat System)
 
 這是一個使用 **Django + PostgreSQL** 開發的完整電商管理系統，整合後台與前台功能，支援商品瀏覽、下單、訂單管理與客服留言功能，並透過 Bootstrap & Grappelli 提供美觀且實用的操作介面。
-
+本專案使用 Django + Django REST Framework 製作 API-only 模式，搭配 drf-spectacular 自動產生 OpenAPI 文件，可支援前後端分離整合需求。
 ---
 
 ## 🔧 專案技術
@@ -111,8 +111,10 @@ python manage.py runserver
     🧠 練習 JS / 前端互動功能（適度學習 Vue / React）
 
 ## 🔌 API 功能 (Django REST Framework)
+「此 API 為後端展示用途，未綁定實際前端」
+- 本專案同時支援 API-only 模式，後端以 Django REST Framework 撰寫。
 
-本專案同時支援 API-only 模式，後端以 Django REST Framework 撰寫。
+
 
 - `/api/products/`：商品列表 (支援 GET)
 - `/api/products/{id}/`：商品詳情 (支援 GET)
@@ -122,6 +124,9 @@ python manage.py runserver
 - `/api/messages/`：訂單留言系統（支援 GET/POST）
 
 API 文件已整合 drf-spectacular 與 Swagger UI，開發者可直接透過瀏覽器檢視完整介面：
+API 文件支援 YAML 格式，可使用 Swagger Editor / Postman 匯入 `/api/schema/` 產生之 OpenAPI 文件：
+- 直接訪問下載檔案：[http://127.0.0.1:8000/api/schema/](http://127.0.0.1:8000/api/schema/)
+- 或於 Swagger Editor 上傳 `schema.yaml` 檢視所有 endpoint 規格
 
 🔗 Swagger 文件：`http://127.0.0.1:8000/api/docs/`  
 🔗 OpenAPI Schema：`http://127.0.0.1:8000/api/schema/`

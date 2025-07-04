@@ -5,7 +5,7 @@ __pycache__/
 
 # 環境管理
 .venv/
-env/
+.env/
 *.env
 .env.*
 
