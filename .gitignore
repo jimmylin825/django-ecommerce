@@ -25,7 +25,6 @@ Thumbs.db
 # Django 靜態與媒體
 staticfiles/
 media/
-
 # pycache 目錄深層排除
 **/__pycache__/
 
