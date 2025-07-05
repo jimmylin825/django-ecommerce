@@ -13,9 +13,11 @@
 - **前端樣式**：Bootstrap 5、Jinja2
 - **後端樣式**：Grappelli
 - **系統管理**：Django Admin 自訂頁面
-- **其他工具**：Python 3.12、Git、PyCharm
+- **其他工具**：Python 3.12、Git、PyCharm、Django REST Framework、Cloudinary、Docker、Render 雲端部屬
 
 ---
+## 🚀 線上展示
+🔗 Demo 網址：[https://django-ecommerce-z8g0.onrender.com](https://django-ecommerce-z8g0.onrender.com)
 
 ## 📦 已實作功能
 
