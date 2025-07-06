@@ -18,7 +18,8 @@
 ---
 ## 🚀 線上展示
 🔗 Demo 網址：[https://django-ecommerce-z8g0.onrender.com](https://django-ecommerce-z8g0.onrender.com)
-
+- 本系統支援 REST API（可透過 /api/docs/ 檢視)
+- 前台可自行註冊帳號測試 後台測試帳號:admin 密碼:admin (展示用僅瀏覽)
 ## 📦 已實作功能
 
 ### 🛒 前台功能
