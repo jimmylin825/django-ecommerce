@@ -143,3 +143,4 @@ class OrderMessageViewSet(viewsets.ModelViewSet):
         return Response({'detail': '無法修改已發送的訊息'}, status=403)
     def partial_update(self, request, *args, **kwargs):
         return Response({'detail': '無法修改訊息'}, status=403)
+

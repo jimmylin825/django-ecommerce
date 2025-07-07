@@ -8,8 +8,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
-from pyexpat.errors import messages
-
 from .models import Order, OrderItem, Product, Category
 from django.utils import timezone
 from django.db.models import Sum, F
@@ -85,8 +83,7 @@ def cart_view(request):
     return render(request, 'shop/cart.html', {'cart_items' : cart_items, 'total' : total, 'step' : 1, 'error' : '發生錯誤請稍後再試'})
 
 
-@csrf_exempt
-#@csrf_exempt 的意思是：「這個 view 不需要 CSRF 驗證」。只能在練習階段用，正式環境請勿使用。
+
 def update_cart(request, product_id):
     if request.method == 'POST':
         quantity = int(request.POST.get('quantity', 1))
@@ -95,8 +92,7 @@ def update_cart(request, product_id):
         request.session['cart'] = cart
     return redirect('cart_view')
 
-@csrf_exempt
-#@csrf_exempt 的意思是：「這個 view 不需要 CSRF 驗證」。只能在練習階段用，正式環境請勿使用。
+
 def remove_cart(request, product_id):
     if request.method == 'POST':
         cart = request.session.get('cart', {})
@@ -104,7 +100,7 @@ def remove_cart(request, product_id):
         request.session['cart'] = cart
     return redirect('cart_view')
 
-@csrf_exempt    #方便測試
+
 def create_order(request):
     if request.method == 'POST':
         cart = request.session.get('cart', {})
