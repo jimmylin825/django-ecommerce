@@ -153,6 +153,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_THROTTLE_CLASSES': [
+            'rest_framework.throttling.UserRateThrottle',
+            'rest_framework.throttling.AnonRateThrottle',
+        ],
+        'DEFAULT_THROTTLE_RATES': {
+            'user': '1000/day',   # 登入使用者每天最多 1000 次
+            'anon': '100/hour',   # 未登入訪客每小時最多 100 次
+        }
 }
 
 CLOUDINARY_STORAGE = {
